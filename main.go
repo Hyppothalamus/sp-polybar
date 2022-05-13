@@ -19,6 +19,7 @@ func main() {
 
     if err != nil {
         fmt.Errorf("error exec command: %s\n", err)
+        os.Exit(0)
     }
 
     if strings.HasPrefix(out.String(), "Error") {
@@ -30,7 +31,7 @@ func main() {
     var title string
     var artist string
 
-    for _, line := range(lines) {
+    for _, line := range lines {
         if strings.HasPrefix(line, "Title") {
             title = strings.TrimSpace(strings.TrimPrefix(line, "Title"))
         } else if strings.HasPrefix(line, "Artist") {
